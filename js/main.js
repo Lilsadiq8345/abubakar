@@ -183,17 +183,56 @@
         });
     }
 
-    // Contact form enhancement
-    $('.contact-form form').on('submit', function (e) {
+    // Contact form enhancement with Supabase
+    $('.contact-form form').on('submit', async function (e) {
         e.preventDefault();
-        var name = $(this).find('input[placeholder="Your Name"]').val();
-        var email = $(this).find('input[placeholder="Your Email"]').val();
-        var subject = $(this).find('input[placeholder="Subject"]').val();
-        var message = $(this).find('textarea[placeholder="Your Message"]').val();
-        var mailto = 'mailto:abubakarsa242@gmail.com'
-            + '?subject=' + encodeURIComponent(subject || 'Contact from Portfolio')
-            + '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
-        window.location.href = mailto;
+
+        // Initialize Supabase (Use your actual project URL and Anon Key)
+        // placeholder credentials - User must update these
+        const supabaseUrl = 'https://lgecmcprwqqbuhcpegko.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxnZWNtY3Byd3FxYnVoY3BlZ2tvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc4NDk1MTMsImV4cCI6MjA4MzQyNTUxM30.E5rTV9mTojP3k4dSWdDGgVJeLvJyQey0clTM0I7AWVc';
+
+        // Simple check if credentials are still placeholders
+        if (supabaseUrl === 'YOUR_SUPABASE_URL' || supabaseKey === 'YOUR_SUPABASE_ANON_KEY') {
+            alert('Please configure Supabase credentials in js/main.js');
+            return;
+        }
+
+        const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        const submitBtn = $(this).find('button[type="submit"]');
+        const originalBtnText = submitBtn.text();
+
+        // Disable button and show loading state
+        submitBtn.prop('disabled', true).text('Sending...');
+
+        const name = $(this).find('input[placeholder="Your Name"]').val();
+        const email = $(this).find('input[placeholder="Your Email"]').val();
+        const subject = $(this).find('input[placeholder="Subject"]').val();
+        const message = $(this).find('textarea[placeholder="Your Message"]').val();
+
+        try {
+            const { data, error } = await _supabase
+                .from('messages')
+                .insert([
+                    { name: name, email: email, subject: subject, message: message }
+                ]);
+
+            if (error) throw error;
+
+            alert('Thank you for getting in touch! Your message has been successfully sent. I will review it and get back to you within 24 hours.');
+            $(this)[0].reset();
+        } catch (error) {
+            console.error('Error sending message:', error);
+            alert('Failed to send message securely. Opening your email client instead...');
+            // Fallback to mailto if Supabase fails
+            var mailto = 'mailto:abubakarsa242@gmail.com'
+                + '?subject=' + encodeURIComponent(subject || 'Contact from Portfolio')
+                + '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+            window.location.href = mailto;
+        } finally {
+            submitBtn.prop('disabled', false).text(originalBtnText);
+        }
     });
 
     // Parallax effect for hero section
