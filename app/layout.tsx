@@ -36,6 +36,12 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
+  themeColor: "#3b82f6",
 };
 
 export default function RootLayout({
