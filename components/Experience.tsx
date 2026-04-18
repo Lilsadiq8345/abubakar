@@ -44,6 +44,16 @@ const experiences = [
       "Developed real-time dashboards with WebSocket integrations",
     ],
   },
+  {
+    date: "Oct 2021 - Dec 2022",
+    role: "Junior Frontend Developer",
+    company: "Purenettechnologies - Kaduna, Nigeria (On-site)",
+    description: [
+      "Developed responsive user interfaces using HTML, CSS, and JavaScript",
+      "Collaborated with design and backend teams to implement pixel-perfect UI components",
+      "Optimised web performance and cross-browser compatibility across multiple projects",
+    ],
+  },
 ];
 
 export default function Experience() {
@@ -64,9 +74,8 @@ export default function Experience() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className={`relative flex items-center justify-between gap-12 flex-col md:flex-row ${
-                  idx % 2 === 0 ? "" : "md:flex-row-reverse"
-                }`}
+                className={`relative flex items-center justify-between gap-12 flex-col md:flex-row ${idx % 2 === 0 ? "" : "md:flex-row-reverse"
+                  }`}
               >
                 {/* Timeline Dot */}
                 <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white shadow-lg -translate-x-1/2 z-10 hidden md:block" />
