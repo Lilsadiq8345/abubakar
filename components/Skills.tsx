@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
-import { Code2, Monitor, Server, Cloud, Smartphone, Paintbrush } from "lucide-react";
+import { Code2, Monitor, Server, Smartphone } from "lucide-react";
 
 const skillCategories = [
   {
@@ -21,8 +21,18 @@ const skillCategories = [
     skills: [
       { name: "React.js", level: 95 },
       { name: "Next.js", level: 90 },
-      { name: "Vue.js", level: 85 },
-      { name: "Tailwind CSS", level: 90 },
+      { name: "Angular", level: 85 },
+      { name: "Vue.js", level: 82 },
+      { name: "Tailwind CSS", level: 92 },
+    ],
+  },
+  {
+    title: "Mobile Development",
+    icon: <Smartphone className="text-emerald-400" size={24} />,
+    skills: [
+      { name: "React Native", level: 88 },
+      { name: "iOS (Expo)", level: 80 },
+      { name: "Android (Expo)", level: 80 },
     ],
   },
   {
@@ -32,7 +42,7 @@ const skillCategories = [
       { name: "Node.js / NestJS", level: 85 },
       { name: "Laravel", level: 90 },
       { name: "Django", level: 80 },
-      { name: "AWS/Docker", level: 75 },
+      { name: "AWS / Docker", level: 75 },
     ],
   },
 ];
@@ -43,7 +53,7 @@ export default function Skills() {
       <div className="container mx-auto px-6">
         <SectionHeader title="Skills & Technologies" subtitle="Technical Expertise" />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, idx) => (
             <motion.div
               key={category.title}

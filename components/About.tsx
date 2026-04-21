@@ -12,10 +12,10 @@ const stats = [
 ];
 
 const expertise = [
-  { label: "FullStack Development", description: "End-to-end web solutions" },
-  { label: "Mobile Applications", description: "iOS & Android development" },
-  { label: "Cloud Solutions", description: "AWS & Docker optimization" },
-  { label: "FinTech Applications", description: "Secure financial systems" },
+  { label: "Full Stack Web Development", description: "End-to-end solutions with React, Next.js & Angular" },
+  { label: "Mobile Applications", description: "Cross-platform iOS & Android with React Native" },
+  { label: "Cloud & DevOps", description: "AWS, Docker & scalable infrastructure" },
+  { label: "FinTech Applications", description: "Secure, high-performance financial systems" },
 ];
 
 export default function About() {
@@ -42,8 +42,9 @@ export default function About() {
             
             <div className="space-y-6 text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
               <p>
-                A highly motivated Software Engineer with over 5 years of experience in React.js, Next.js, Laravel,
-                Vue.js, and Cloud Solutions, specializing in building scalable, high-performance web applications.
+                A highly motivated Full Stack Software Engineer with over 5 years of experience in React.js, Next.js,
+                Angular, React Native, Laravel, Vue.js, and Cloud Solutions — specializing in building scalable,
+                high-performance web and mobile applications.
               </p>
               <p>
                 Proven track record of delivering end-to-end solutions—from responsive UIs to robust
